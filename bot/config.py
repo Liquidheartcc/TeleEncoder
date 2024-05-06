@@ -20,7 +20,7 @@ class Config:
     def __init__(self):
         try:
             self.ALWAYS_DEPLOY_LATEST = config(
-                "ALWAYS_DEPLOY_LATEST", default=True, cast=bool
+                "ALWAYS_DEPLOY_LATEST", default=False, cast=bool
             )
             self.ALLOW_ACTION = config("ALLOW_ACTION", default=True, cast=bool)
             self.APP_ID = config("APP_ID", default=6, cast=int)
@@ -30,7 +30,7 @@ class Config:
             self.ARIA2_PORT = config("ARIA2_PORT", default=6800, cast=int)
             self.BOT_TOKEN = config("BOT_TOKEN")
             self.CACHE_DL = config("CACHE_DL", default=False, cast=bool)
-            self.CAP_DECO = config("CAP_DECO", default="💌")
+            self.CAP_DECO = config("CAP_DECO", default="◉")
             self.C_LINK = config("C_LINK", default="Encoded by HyperX")
             self.CMD_SUFFIX = config("CMD_SUFFIX", default=str())
             self.DATABASE_URL = config("DATABASE_URL", default=None)

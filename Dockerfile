@@ -9,7 +9,7 @@ ENV TZ=Africa/Lagos
 ENV TERM=xterm
 
 # Install Dependencies
-RUN apt-get update && apt-get install -y git aria2 bash xz-utils wget curl pv jq python3-pip mediainfo psmisc procps mkvtoolnix && python3 -m pip install --upgrade pip setuptools
+RUN apt-get update && apt-get install -y git aria2 bash xz-utils wget curl pv jq python3-pip handbrake-cli mediainfo psmisc procps mkvtoolnix && python3 -m pip install --upgrade pip setuptools
 
 # Install latest ffmpeg
 RUN wget https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz && tar -xvf *xz && cp */bin/* /usr/bin && rm -rf *xz && rm -rf *gpl

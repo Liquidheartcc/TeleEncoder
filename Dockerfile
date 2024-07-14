@@ -12,8 +12,8 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install git aria2 bash wget curl pv jq python3-pip mkvtoolnix mediainfo handbrake-cli psmisc -y && python3 -m pip install --upgrade pip setuptools
 
 # Install latest ffmpeg
-COPY --from=mwader/static-ffmpeg:7.0.1 /ffmpeg /usr/local/bin/
-COPY --from=mwader/static-ffmpeg:7.0.1 /ffprobe /usr/local/bin/
+COPY --from=mwader/static-ffmpeg:7.0.1 /ffmpeg /bin/ffmpeg
+COPY --from=mwader/static-ffmpeg:7.0.1 /ffprobe /bin/ffprobe
 
 # Copy files from repo to home directory
 COPY . .

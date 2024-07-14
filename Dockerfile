@@ -1,5 +1,4 @@
-# Base Image 
-FROM ubuntu:latest
+FROM python:3.10-slim-buster
 
 # Setup home directory, non interactive shell and timezone
 RUN mkdir /bot /tgenc && chmod 777 /bot
@@ -9,10 +8,12 @@ ENV TZ=Africa/Lagos
 ENV TERM=xterm
 
 # Install Dependencies
-RUN apt-get update && apt-get install -y git aria2 bash xz-utils wget curl pv jq python3-pip handbrake-cli mediainfo psmisc procps mkvtoolnix && python3 -m pip install --upgrade pip setuptools
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install git aria2 bash wget curl pv jq python3-pip mkvtoolnix mediainfo handbrake-cli psmisc -y && python3 -m pip install --upgrade pip setuptools
 
 # Install latest ffmpeg
-RUN wget https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz && tar -xvf *xz && cp */bin/* /usr/bin && rm -rf *xz && rm -rf *gpl
+COPY --from=mwader/static-ffmpeg:7.0.1 /ffmpeg /usr/local/bin/
+COPY --from=mwader/static-ffmpeg:7.0.1 /ffprobe /usr/local/bin/
 
 # Copy files from repo to home directory
 COPY . .
